@@ -30,7 +30,6 @@ class Post(Base):
     __tablename__ = 'post'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'))
-    User = relationship(User)
 
 class Comment(Base):
     __tablename__ = 'comment'
@@ -38,8 +37,6 @@ class Comment(Base):
     comment_text = Column(String(250))
     author_id = Column(Integer, ForeignKey('user.id'))
     post_id = Column(Integer, ForeignKey('post.id'))
-    User = relationship(User)
-    Post = relationship(Post)
 
 class Media(Base):
     __tablename__ = 'media'
@@ -47,7 +44,6 @@ class Media(Base):
     type = Column(Enum(MyEnum))
     url = Column(String(250))
     post_id = Column(Integer, ForeignKey('post.id'))
-    Post = relationship(Post)
 
     def to_dict(self):
         return {}
